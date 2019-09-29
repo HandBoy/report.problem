@@ -16,7 +16,7 @@ public class Problem {
     @NotBlank
     private String origin;
     @NotBlank
-    private String data;
+    private String date;
     @NotBlank
     private String hour;
 
@@ -44,12 +44,12 @@ public class Problem {
         this.origin = origin;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getHour() {
