@@ -46,4 +46,19 @@ public class ProblemResources {
         return problem;
     }
 
+    @PutMapping(path = "/{problemId}", produces = "application/json")
+    public ResponseEntity<?> updateTask(@PathVariable("problemId") long problemId, @Valid @RequestBody Problem newProblem) {
+        Optional<Problem> oldPessoa = problemRepository.findById(problemId);
+        if (oldPessoa.isPresent()) {
+            Problem pb = oldPessoa.get();
+            pb.setName(newProblem.getName());
+            pb.setOrigin(newProblem.getOrigin());
+            pb.setDate(newProblem.getDate());
+            pb.setHour(newProblem.getHour());
+            return new ResponseEntity<>(problemRepository.save(pb), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(new ApiError(404, "Problem not found", new Date()), HttpStatus.NOT_FOUND);
+
+    }
 }
