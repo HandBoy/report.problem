@@ -31,8 +31,6 @@ public class DataConfiguration {
         return dataSource;
     }
 
-
-
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
