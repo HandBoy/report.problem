@@ -3,6 +3,8 @@ package br.com.report.resources;
 import br.com.report.errors.ApiError;
 import br.com.report.models.Problem;
 import br.com.report.repository.ProblemRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.util.Optional;
 
+@Api(value="API Rest Problems")
 @RestController
 @RequestMapping("/problem")
 public class ProblemResources {
@@ -19,6 +22,7 @@ public class ProblemResources {
     @Autowired
     private ProblemRepository problemRepository;
 
+    @ApiOperation(value="Return List os problems")
     @GetMapping(produces = "application/json")
     public @ResponseBody
     Iterable<Problem> listProblems() {
